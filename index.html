@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khargosh ❤️</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- FLOATING HEARTS -->
+<div class="hearts-container">
+  <span class="heart" style="left:10%; animation-delay:0s;">💖</span>
+  <span class="heart" style="left:30%; animation-delay:1.5s;">💗</span>
+  <span class="heart" style="left:50%; animation-delay:0.8s;">💘</span>
+  <span class="heart" style="left:70%; animation-delay:2s;">💓</span>
+  <span class="heart" style="left:90%; animation-delay:1s;">💞</span>
+</div>
+
+<div class="container">
+
+  <!-- PAGE 1 -->
+  <div class="page active">
+    <div class="card">
+      <img src="images/pic1.jpg" class="photo">
+      <h1>Hey Bbg ❤️</h1>
+      <p>
+        This little corner of the internet exists only for you —<br>
+        to see, feel, and keep a tiny piece of my love 🐇✨
+      </p>
+      <button onclick="nextPage()">Next 💌</button>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page">
+    <div class="card">
+      <img src="images/pic2.jpg" class="photo">
+      <h1>Khargosh 🐰</h1>
+      <p>
+        The first name I ever gave you,<br>
+        and the softest place in my heart.
+      </p>
+      <button onclick="nextPage()">Next 💕</button>
+    </div>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="page">
+    <div class="card">
+      <img src="images/pic3.jpg" class="photo">
+      <h1>My Safe Place 🫶</h1>
+      <p>
+        Every laugh, every fight,<br>
+        every moment — worth it.
+      </p>
+      <button onclick="nextPage()">Next 💗</button>
+    </div>
+  </div>
+
+  <!-- PAGE 4 -->
+  <div class="page">
+    <div class="card">
+      <img src="images/pic4.jpg" class="photo">
+      <h1>My Favourite Human ✨</h1>
+      <p>
+        Loving you is the easiest thing<br>
+        I’ve ever done.
+      </p>
+      <button onclick="nextPage()">Next 💘</button>
+    </div>
+  </div>
+
+  <!-- SURPRISE PAGE (DO NOT TOUCH TEXT) -->
+  <div class="page">
+    <div class="card">
+      <h1>One Last Thing ❤️</h1>
+      <p>
+        I love you more than logic,<br>
+        more than deadlines,<br>
+        more than ML reviews and panic nights 😭
+      </p>
+
+      <button onclick="showLove()">Open 🎁</button>
+
+      <p id="loveText" class="hidden">
+        Happy Birthday, my Khargosh 🐰<br>
+        You’re stuck with me.<br>
+        Forever & always 💞
+      </p>
+
+      <button onclick="nextPage()" style="margin-top:12px;">Next →</button>
+    </div>
+  </div>
+
+  <!-- FINAL 18TH BIRTHDAY PAGE -->
+  <div class="page">
+    <div class="card">
+      <img src="images/pic5.jpg" class="photo">
+      <h1>Happy 18th Birthday 🎂✨</h1>
+      <p>
+        Welcome to adulthood, my love.<br>
+        I’ll be right here —<br>
+        cheering you on, annoying you,<br>
+        and loving you endlessly 💗
+      </p>
+      <button onclick="restart()">Replay 🔁</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const pages = document.querySelectorAll(".page");
+let current = 0;
+
+function nextPage() {
+  if (current < pages.length - 1) {
+    pages[current].classList.remove("active");
+    pages[current].classList.add("prev");
+    current++;
+    pages[current].classList.add("active");
+  }
+}
+
+function restart() {
+  pages.forEach(p => p.classList.remove("active", "prev"));
+  current = 0;
+  pages[0].classList.add("active");
+}
+
+function showLove() {
+  document.getElementById("loveText").style.display = "block";
+}
+</script>
+
+</body>
+</html>
