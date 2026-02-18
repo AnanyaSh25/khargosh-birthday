@@ -1,115 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>For My Khargosh 🐰</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khargosh ❤️</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<!-- 🔒 LOCK SCREEN -->
-<div id="lockScreen" class="screen active">
-    <h1>⏳ Surprise Unlocks In</h1>
-    <div id="countdown">Loading...</div>
-    <p>Wait till your birthday, cutie 💕</p>
+<!-- FLOATING HEARTS -->
+<div class="hearts-container">
+  <span class="heart" style="left:10%; animation-delay:0s;">💖</span>
+  <span class="heart" style="left:30%; animation-delay:1.5s;">💗</span>
+  <span class="heart" style="left:50%; animation-delay:0.8s;">💘</span>
+  <span class="heart" style="left:70%; animation-delay:2s;">💓</span>
+  <span class="heart" style="left:90%; animation-delay:1s;">💞</span>
 </div>
 
-<!-- 🌸 MAIN CONTENT (LOCKED INITIALLY) -->
-<div id="mainContent" class="hidden">
+<div class="container">
 
-    <!-- PAGE 1 -->
-    <section class="screen active">
-        <h1>Happy 18th Birthday 🎉</h1>
-        <p>This little corner of the internet exists only for you 🐇✨</p>
-        <button onclick="nextPage()">Next →</button>
-    </section>
+  <!-- PAGE 1 -->
+  <div class="page active">
+    <div class="card">
+      <img src="images/pic1.jpg" class="photo">
+      <h1>Hey You ❤️</h1>
+      <p>
+        This page exists just to say<br>
+        you mean the world to me.
+      </p>
+      <button onclick="nextPage()">Next 💌</button>
+    </div>
+  </div>
 
-    <!-- PAGE 2 -->
-    <section class="screen">
-        <img src="images/pic1.jpg" class="photo">
-        <p>You grew up but who cares u r still my baby 🥺</p>
-        <button onclick="nextPage()">Next →</button>
-    </section>
+  <!-- PAGE 2 -->
+  <div class="page">
+    <div class="card">
+      <img src="images/pic2.jpg" class="photo">
+      <h1>Khargosh 🐰</h1>
+      <p>
+        The first name I ever gave you,<br>
+        and the softest place in my heart.
+      </p>
+      <button onclick="nextPage()">Next 💕</button>
+    </div>
+  </div>
 
-    <!-- PAGE 3 -->
-    <section class="screen">
-        <img src="images/pic2.jpg" class="photo">
-        <p>Still choosing you. Every version. Every day 💘</p>
-        <button onclick="nextPage()">Next →</button>
-    </section>
+  <!-- PAGE 3 -->
+  <div class="page">
+    <div class="card">
+      <img src="images/pic3.jpg" class="photo">
+      <h1>My Safe Place 🫶</h1>
+      <p>
+        Every laugh, every fight,<br>
+        every moment — worth it.
+      </p>
+      <button onclick="nextPage()">Next 💗</button>
+    </div>
+  </div>
 
-    <!-- 🎁 SURPRISE PAGE (UNCHANGED) -->
-    <section class="screen">
-        <h1>One Last Thing ❤️</h1>
-        <p>
-            I love you more than logic,<br>
-            more than deadlines,<br>
-            more than ML reviews and panic nights 😭
-        </p>
+  <!-- PAGE 4 -->
+  <div class="page">
+    <div class="card">
+      <img src="images/pic4.jpg" class="photo">
+      <h1>My Favourite Human ✨</h1>
+      <p>
+        Loving you is the easiest thing<br>
+        I’ve ever done.
+      </p>
+      <button onclick="nextPage()">Next 💘</button>
+    </div>
+  </div>
 
-        <button onclick="showLove()">Open 🎁</button>
+  <!-- SURPRISE PAGE (DO NOT TOUCH TEXT) -->
+  <div class="page">
+    <div class="card">
+      <h1>One Last Thing ❤️</h1>
+      <p>
+        I love you more than logic,<br>
+        more than deadlines,<br>
+        more than ML reviews and panic nights 😭
+      </p>
 
-        <p id="loveText">
-            Happy Birthday, my Khargosh 🐰<br>
-            You’re stuck with me.<br>
-            Forever & always 💞
-        </p>
-    </section>
+      <button onclick="showLove()">Open 🎁</button>
 
-    <!-- 🐰 EXTRA PAGE (AFTER SURPRISE) -->
-    <section class="screen">
-        <h1>Welcome to Adulthood 😌</h1>
-        <p>
-            18 looks really good on you.<br>
-            I’m so proud of you. Always.
-        </p>
-        <p>— Yours forever 💖</p>
-    </section>
+      <p id="loveText" class="hidden">
+        Happy Birthday, my Khargosh 🐰<br>
+        You’re stuck with me.<br>
+        Forever & always 💞
+      </p>
+
+      <button onclick="nextPage()" style="margin-top:12px;">Next →</button>
+    </div>
+  </div>
+
+  <!-- FINAL 18TH BIRTHDAY PAGE -->
+  <div class="page">
+    <div class="card">
+      <img src="images/pic5.jpg" class="photo">
+      <h1>Happy 18th Birthday 🎂✨</h1>
+      <p>
+        Welcome to adulthood, my love.<br>
+        I’ll be right here —<br>
+        cheering you on, annoying you,<br>
+        and loving you endlessly 💗
+      </p>
+      <button onclick="restart()">Replay 🔁</button>
+    </div>
+  </div>
 
 </div>
 
 <script>
-const unlockTime = new Date("2026-02-19T00:00:00"); // EDIT IF NEEDED
-const countdownEl = document.getElementById("countdown");
-const lockScreen = document.getElementById("lockScreen");
-const mainContent = document.getElementById("mainContent");
-
-function updateCountdown() {
-    const now = new Date();
-    const diff = unlockTime - now;
-
-    if (diff <= 0) {
-        lockScreen.style.display = "none";
-        mainContent.classList.remove("hidden");
-        return;
-    }
-
-    const hrs = Math.floor(diff / (1000 * 60 * 60));
-    const mins = Math.floor((diff / (1000 * 60)) % 60);
-    const secs = Math.floor((diff / 1000) % 60);
-
-    countdownEl.textContent = `${hrs}h ${mins}m ${secs}s`;
-}
-
-setInterval(updateCountdown, 1000);
-updateCountdown();
-
-// PAGE NAV
-let currentPage = 0;
-const pages = document.querySelectorAll("#mainContent .screen");
+const pages = document.querySelectorAll(".page");
+let current = 0;
 
 function nextPage() {
-    pages[currentPage].classList.remove("active");
-    currentPage++;
-    pages[currentPage].classList.add("active");
+  if (current < pages.length - 1) {
+    pages[current].classList.remove("active");
+    pages[current].classList.add("prev");
+    current++;
+    pages[current].classList.add("active");
+  }
 }
 
-// SURPRISE
+function restart() {
+  pages.forEach(p => p.classList.remove("active", "prev"));
+  current = 0;
+  pages[0].classList.add("active");
+}
+
 function showLove() {
-    document.getElementById("loveText").style.display = "block";
+  document.getElementById("loveText").style.display = "block";
 }
 </script>
 
 </body>
 </html>
-
